@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static martortags %}
 {% block navbar %}
 <div class="">
   <div class="items-center justify-between hidden py-2 font-medium shadow-md md:flex md:shadow-none">
@@ -155,11 +155,11 @@
   
   <div class="flex flex-col items-stretch md:flex-1 md:block">
       <div class="text-[#1A88D1] w-60 mx-auto md:mx-0 md:text-3xl font-bold md:text-left text-2xl pb-4 leading-10 border-b-2 border-b-blue-700">
-          GIỚI THIỆU VỀ TMATH CODING
+          {{ title|upper }}
       </div>
 
-      <div class="mt-8 font-medium leading-7 text-gray-600/90 md:text-left md:text-xl md:pr-20">
-          Sau một thời gian hoạt động trên nền tảng của ntucoder, chúng tôi đã xây dựng một nền tảng riêng dựa trên nền tảng của dmoj! Trang web sẽ là nơi đăng tải các đề thi, các chuỗi bài giảng, bài tập nhằm hỗ trợ cho các học viên của tmath có được kiến thức tốt nhất về lập trình thì đấu!
+      <div class="mt-8 font-medium leading-7 prose text-gray-600/90 md:text-left md:text-xl md:pr-20">
+          {{ description|safe_markdown }}
       </div>
 
       <div class="flex w-full my-7">

@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 class ProfileManager(BaseUserManager):
 
-    def create_user(self, username, fullname, password=None):
+    def create_user(self, username, password=None):
         if not username:
             raise ValueError('Username cant empty!')
         user = self.model(
@@ -17,7 +17,7 @@ class ProfileManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, fullname, password=None):
+    def create_superuser(self, username, password=None):
         if not username:
             raise ValueError('Username cant empty!')
         user = self.create_user(
