@@ -1,4 +1,3 @@
-from msilib.schema import Class
 from django.contrib import admin
 from .models import CoppyRight, HomeButton, HomeContent, Landing, Logo, Navigation, About, Achievement, Classroom, HomeButton, New
 # Register your models here.
