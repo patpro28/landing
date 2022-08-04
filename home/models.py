@@ -58,7 +58,7 @@ class HomeButton(models.Model):
 
 class About(models.Model):
   title = models.CharField(_("title"), max_length=255, blank=True)
-  content = models.CharField(_("content"), max_length=255, blank=True)
+  content = MartorField(_("content"), max_length=255, blank=True)
   img_link = models.CharField(_("link img"), max_length=255, blank=True)
 
   def __str__(self) -> str:
@@ -66,7 +66,7 @@ class About(models.Model):
 
 class Achievement(models.Model):
   number = models.CharField(_("number"), max_length=255, blank=True)
-  content = models.CharField(_("content"), max_length=255, blank=True)
+  content = MartorField(_("content"), max_length=255, blank=True)
 
   def __str__(self) -> str:
     return self.number
