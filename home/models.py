@@ -13,6 +13,12 @@ class Landing(models.Model):
     return self.title
 
 
+class Logo(models.Model):
+  logo = models.CharField(_("link"), max_length=1024)
+
+  def __str__(self) -> str:
+    return self.logo
+
 class Navigation(models.Model):
   name = models.CharField(_("name"), max_length=50)
   link = models.CharField(_("link"), max_length=255)
@@ -24,8 +30,17 @@ class HomeContent(models.Model):
   title = models.CharField(_("content1"), max_length=255, blank=True)
   title2 = models.CharField(_("content2"), max_length=255, blank=True)
   title3 = models.CharField(_("content3"), max_length=255, blank=True)
-  title4 = models.CharField(_("content4"), max_length=255, blank=True)
-  title5 = models.CharField(_("content5"), max_length=255, blank=True)
+  img = models.CharField(_("link image"), max_length=1024, blank=True)
+  path_1 = models.CharField(_("path 1"), max_length=1024, blank=True)
+  detail_1 = models.CharField(_("detail 1"), max_length=1024, blank=True)
+  path_2 = models.CharField(_("path 2"), max_length=1024, blank=True)
+  detail_2 = models.CharField(_("detail 2"), max_length=1024, blank=True)
+  path_3 = models.CharField(_("path 3"), max_length=1024, blank=True)
+  detail_3 = models.CharField(_("detail 3"), max_length=1024, blank=True)
+
+  
+  
+
 
   def __str__(self) -> str:
     return self.title
@@ -37,12 +52,6 @@ class HomeButton(models.Model):
   def __str__(self) -> str:
     return self.button
 
-class HomeImg(models.Model):
-  link = models.CharField(_("link img"), max_length=255, blank=True)
-  img_1 = models.CharField(_("img1"), max_length=255, blank=True)
-  img_1 = models.CharField(_("img1"), max_length=255, blank=True)
-  img_1 = models.CharField(_("img1"), max_length=255, blank=True)
-
 
   def __str__(self) -> str:
     return self.button
@@ -50,7 +59,7 @@ class HomeImg(models.Model):
 class About(models.Model):
   title = models.CharField(_("title"), max_length=255, blank=True)
   content = models.CharField(_("content"), max_length=255, blank=True)
-  img_link = models.CharField(_("link"), max_length=255, blank=True)
+  img_link = models.CharField(_("link img"), max_length=255, blank=True)
 
   def __str__(self) -> str:
     return self.title
@@ -80,14 +89,20 @@ class Classroom (models.Model):
   def __str__(self) -> str:
     return self.name
 
-class Emath (models.Model):
+class New (models.Model):
   title = models.CharField(_("tile"), max_length=255, blank=True)
   content = models.CharField(_("content"), max_length=255, blank=True)
   note = models.CharField(_("note"), max_length=255, blank=True)
-  link = models.CharField(_("link"), max_length=255, blank=True)
-  appstore = models.CharField(_("appstore_link"), max_length=255, blank=True)
-  chplay = models.CharField(_("chplay_link"), max_length=255, blank=True)
-
+  link_img = models.CharField(_("link image"), max_length=255, blank=True)
+  button = models.CharField(_("button"), max_length=255, blank=True)
+  button_link = models.CharField(_("link button"), max_length=255, blank=True)
 
   def __str__(self) -> str:
     return self.title
+
+
+class CoppyRight (models.Model):
+  title = models.CharField(_("tile"), max_length=255, blank=True)
+
+  def __str__(self) -> str:
+        return self.title

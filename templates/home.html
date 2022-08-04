@@ -7,7 +7,9 @@
     <!--========== Logo Section Desktop ==========-->  
     <div class="basis-1/4">
         <div class="text-[#2196F3] font-bold text-2xl py-2">
-            <img src="https://tmath.vn/static/icons/logo.svg" alt="">
+            {% for logo in  logo_section %}
+                <img src="{{ logo.logo }}" alt="">
+            {% endfor %}
         </div>
     </div>
       
@@ -29,7 +31,9 @@
         <div class="flex items-center justify-between">
             <div class="basis-1/4">
                 <div class="text-[#2196F3] font-bold text-2xl p-4">
-                    <img src="https://tmath.vn/static/icons/logo.svg" alt="">
+                    {% for logo in  logo_section %}
+                        <img src="{{ logo.logo }}" alt="">
+                    {% endfor %}
             </div>
         </div>
         <i class="block px-6 py-4 fas fa-bars fa-lg md:hidden" id="btn"></i>
@@ -93,15 +97,20 @@
 
         <div class="relative grid grid-cols-2 gap-4 md:px-10 md:block md:flex-1 md:pb-6">
             <div class="relative flex justify-center col-span-2 mt-32 mb-20 text-center">
-                <div class="bg-[#BBDEFB] rounded-[2.5rem] rotate-[5deg] w-[90%] aspect-square top-0 "></div>
-                <div class="bg-[#64B5F6] rounded-[2.5rem] rotate-[-17deg] w-[90%] aspect-square top-0 absolute"></div>
-                <img class="w-[70%] absolute top-[-26%]" src="{% static 'img/kid1.png'%}">
+                {% for home_content in home_info %}
+                    <div class="bg-[#BBDEFB] rounded-[2.5rem] rotate-[5deg] w-[90%] aspect-square top-0 "></div>
+                    <div class="bg-[#64B5F6] rounded-[2.5rem] rotate-[-17deg] w-[90%] aspect-square top-0 absolute"></div>
+                    <img class="w-[70%] absolute top-[-26%]" src="{{ home_content.img }}">
+                {% endfor %}
+                
             </div>
 
             <div class="bg-white md:absolute md:w-56 left-0 bottom-0 md:-translate-y-24 md:-translate-x-8 shadow-[1px_1px_10px_rgba(0,0,0,0.25)] rounded-lg col-span-1 row-start-2 flex p-4 items-center justify-between">
                 <div class="md:pl-4">
-                    <div class="text-lg font-semibold leading-7">TCoding</div>
-                    <div class="text-[#A4A4A4] font-semibold text-xs">10 Classes</div>
+                    {% for home_content in home_info %}
+                        <div class="text-lg font-semibold leading-7">{{ home_content.path_1 }}</div>
+                        <div class="text-[#A4A4A4] font-semibold text-xs">{{ home_content.detail_1 }}</div>
+                    {% endfor %}
                 </div>
                 
                 <img class="h-10 pr-2" src="{% static 'img/ana1.png'%}">
@@ -109,16 +118,21 @@
             </div>
             <div class="bg-white md:absolute md:top-0 md:right-0 md:translate-y-12 md:translate-x-8 md:w-52 shadow-[1px_1px_10px_rgba(0,0,0,0.25)] rounded-lg col-span-1 row-start-3 flex p-4 items-center justify-between">
                 <div class="">
-                    <div class="text-lg font-semibold leading-7">Emath</div>
-                    <div class="text-[#A4A4A4] font-semibold text-xs">8 Classes</div>
+
+                    {% for home_content in home_info %}
+                        <div class="text-lg font-semibold leading-7">{{ home_content.path_2 }}</div>
+                        <div class="text-[#A4A4A4] font-semibold text-xs">{{ home_content.detail_2 }}</div>
+                    {% endfor %}
                 </div>
                 
                 <img class="h-10" src="{% static 'img/ana2.png'%}">
             </div>
             <div class="bg-white md:absolute md:top-1/2 md:translate-x-1/2 md:-translate-y-1/2 right-0 md:w-48 md:h-48 shadow-[1px_1px_10px_rgba(0,0,0,0.25)] rounded-lg row-span-2 row-start-2 col-start-2 p-3 flex flex-col">
-                <div class="text-[#A4A4A4] text-[0.625rem]">Total students</div>
+                {% for home_content in home_info %}
+
+                <div class="text-[#A4A4A4] text-[0.625rem]">{{ home_content.path_3 }}</div>
                 
-                <div class="mt-1 text-xl font-bold leading-7">1,023</div>
+                <div class="mt-1 text-xl font-bold leading-7">{{ home_content.detail_3 }}</div>
 
                 <div class="grid grid-rows-[4fr_1fr] grid-cols-6 flex-1 gap-1.5 [&>*]:font-semibold [&>*]:text-xs">
                     <div class="col-start-1 bg-[#64B5F6] mt-10 rounded-[0.1875rem]"></div>
@@ -158,6 +172,8 @@
                     </div>
 
                 </div>
+                {% endfor %}
+            
             </div>
         </div>
     </div>
@@ -170,7 +186,8 @@
 
         {% for about in about_section %}
         <div class="md:flex-1 md:flex md:flex-col md:items-center md:justify-center">
-            <img src="{% static 'img/emath2.'%}png" class="md:w-96 md:h-96">
+            <img src="{{ about.img_link }}" class="md:w-96 md:h-96">
+            
         </div>
 
         <div class="flex flex-col items-stretch md:flex-1 md:block">
@@ -300,37 +317,39 @@
 
 {% endblock courses %}
 
-{% block emath %}
+{% block new %}
 <div class="flex flex-col items-center min-h-screen px-10 my-20 text-center about md:flex-row md:min-h-screen md:px-24">
-    {% for emath in emath_section %}
+    {% for new in new_section %}
         <div class="md:flex-1 md:flex md:justify-center">
-            <img src="{% static 'img/emath.png' %}" class="h-auto px-10 mb-6 md:mx-0 md:mb-0">
+            <img src="{{ new.link_img }}" class="h-auto px-10 mb-6 md:mx-0 md:mb-0">
         </div>
         
         <div class="md:flex-1">
-                <div class="text-[#1A88D1] md:text-xl text-2xl font-semibold md:text-left">
-                    {{ emath.title }}
-                </div>
-                <div class="mt-3 mb-6 font-semibold md:text-3xl md:my-3 md:text-left">
-                    {{ emath.content }}
-                </div>
+            <div class="text-[#1A88D1] md:text-xl text-2xl font-semibold md:text-left">
+                {{ new.title }}
+            </div>
+            <div class="mt-3 mb-6 font-semibold md:text-3xl md:my-3 md:text-left">
+                {{ new.content }}
+            </div>
 
-                <div class="text-[#A4A4A4] mt-3 md:text-left md:text-lg">
-                    {{ emath.note }}
-                </div>
+            <div class="text-[#A4A4A4] mt-3 md:text-left md:text-lg">
+                {{ new.note }}
+            </div>
 
-                <div class="flex justify-center gap-3 mt-10">
-                    <img src="{% static 'img/app1.png'%}" class="md:w-40 w-[45%]" />
-                    <img src="{% static 'img/app2.png'%}" class="md:w-40 w-[45%]" />
-                </div>
+            <div class=" items-stretch gap-4 mb-16 grid grid-cols-2 w-96 mt-8">
+                <a href="{{ new.button_link }}" class="font-semibold bg-[#2196F3] text-white py-3 rounded-xl text-center shadow-[1px_1px_10px_rgba(0,0,0,0.25)] min-w-[10rem] text-xl">
+                    {{ new.button }}
+                </a>
+            </div>
         </div>
+
     {% endfor %}
 
 </div>
 
 
 
-{% endblock emath %}
+{% endblock new %}
 
 <!--========== Footer Section ==========-->  
 
@@ -342,13 +361,27 @@
                 <div class="text-white uppercase font-semibold text-lg">Tmath Education</div>
 
                 <div class="flex items-center text-[#757575] mt-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
+                    <div class="h-6 w-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
                     <div class="block ml-4">
-                        <div class="text-md font-medium text-white uppercase">Địa chỉ</div>
-                        <div class="text-md font-medium">Sô 6, ngõ 9, đường Nguyễn Thị Minh Khai</div>
+                        <div class="text-md font-medium text-white uppercase">Cơ sở 1</div>
+                        <div class="text-md font-medium">Nhà 9, ngõ 6, đường Nguyễn Thị Minh Khai - TP.Vinh - Nghệ An</div>
+                    </div>
+                </div>
+                <div class="flex items-center text-[#757575] mt-4">
+                    <div class="h-6 w-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <div class="block ml-4">
+                        <div class="text-md font-medium text-white uppercase">Cơ sở 2</div>
+                        <div class="text-md font-medium">12 Trần Huy Liệu - TP.Vinh - Nghệ An</div>
                     </div>
                 </div>
                 <hr class="w-42 text-[#757575] mt-4">
@@ -359,32 +392,27 @@
                     </svg>
                     <div class="block ml-4">
                         <div class="text-md font-medium text-white uppercase">Điện Thoại</div>
-                        <div class="text-md font-medium">(+84) 123456789</div>
+                        <div class="text-md font-medium">0384550187</div>
+                        <div class="text-md font-medium">0983420518
+                        </div>
+
                     </div>
                 </div>
                 <hr class="w-42 text-[#757575] mt-4">
 
                 <div class="flex items-center text-[#757575] mt-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                      </svg>
+                    <div class="h-6 w-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                        </svg>
+                    </div>
+                    
                     <div class="block ml-4">
                         <div class="text-md font-medium text-white uppercase">Email</div>
                         <div class="text-md font-medium">nguyenductoandhv@gmail.com</div>
                     </div>
                 </div>
 
-                <hr class="w-42 text-[#757575] mt-4">
-
-                <div class="flex items-center text-[#757575] mt-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <div class="block ml-4">
-                        <div class="text-md font-medium text-white uppercase">Giờ làm việc</div>
-                        <div class="text-md font-medium">Mon - Sun / 7:30AM - 9:30PM</div>
-                    </div>
-                </div>
                 
 
             </div>
@@ -482,19 +510,32 @@
 
             <div class="social_network p-8 sm:p-0 sm:mx-8">
                 <div class="text-white uppercase font-semibold text-lg mb-8">Liên hệ</div>
-                <div class="flex mt-2 cursor-pointer">
-                    <img class="w-6 h-6" src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_1280.png" alt="">
-                    <div class="text-white font-semibold ml-2">Facebook</div>
-                </div>
+                <a href="https://www.facebook.com/tmathcoding/" target="_blank">
+                     <div class="flex mt-2 cursor-pointer">
+                        <img class="w-6 h-6" src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_1280.png" alt="">
+                        <div class="text-white font-semibold ml-2">Facebook</div>
+                    </div>
+                </a>
+
+                <a href="https://www.facebook.com/tmathcoding/" target="_blank">
+                    <div class="flex mt-4 cursor-pointer">
+                        <img class="w-6 h-6" src="https://thejulius.com.vn/wp-content/uploads/2021/10/mess1.png" alt="">
+                       <div class="text-white font-semibold ml-2">Messenger</div>
+                   </div>
+               </a>
                 
-                <div class="flex mt-4">
-                    <img class="w-6 h-6" src="https://thejulius.com.vn/wp-content/uploads/2021/10/mess1.png" alt="">
-                    <div class="text-white font-semibold ml-2">Messenge</div>
-                </div>
     
-                <div class="flex mt-4">
+                <div class="flex mt-4 cursor-pointer">
                     <img class="w-6 h-6" src="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png" alt="">
-                    <div class="text-white font-semibold ml-2">Zalo</div>
+                    <div class=" ml-2">
+                        <div class="text-white font-semibold">0384550187</div>
+                    </div>
+                </div>
+                <div class="flex mt-4 cursor-pointer">
+                    <img class="w-6 h-6" src="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png" alt="">
+                    <div class=" ml-2">
+                        <div class="text-white font-semibold">0983420518</div>
+                    </div>
                 </div>
     
             </div>
@@ -504,9 +545,13 @@
     </div>
 </div>
 
-<div class="text-white w-full flex justify-center p-4 mx-auto bg-[#272723] text-[#A4a4a4]">
-    @2022.Tmath Coding Education
-</div>
+
+{% for coppyright in coppyright_section %}
+    <div class="text-white w-full flex justify-center p-4 mx-auto bg-[#272723] text-[#A4a4a4]">
+        {{ coppyright.title }}
+    </div>
+{% endfor %}
+
 
 
 {% endblock footer %}
