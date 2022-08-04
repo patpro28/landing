@@ -61,6 +61,8 @@ class About(models.Model):
   content = MartorField(_("content"), max_length=255, blank=True)
   img_link = models.CharField(_("link img"), max_length=255, blank=True)
 
+
+
   def __str__(self) -> str:
     return self.title
 
