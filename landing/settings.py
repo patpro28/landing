@@ -199,6 +199,7 @@ ALLOWED_URL_SCHEMES = [
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+RESOURCE_IMG = 'img/'
 STATICFILES_DIRS = [
     BASE_DIR / 'resources'
 ]

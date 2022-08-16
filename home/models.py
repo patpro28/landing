@@ -17,94 +17,88 @@ class Logo(models.Model):
   logo = models.CharField(_("link"), max_length=1024)
 
   def __str__(self) -> str:
-    return self.logo
+      return self.logo
 
-class Navigation(models.Model):
-  name = models.CharField(_("name"), max_length=50)
-  link = models.CharField(_("link"), max_length=255)
-
-  def __str__(self) -> str:
-    return self.name
-
-class HomeContent(models.Model):
-  title = models.CharField(_("content1"), max_length=255, blank=True)
-  title2 = models.CharField(_("content2"), max_length=255, blank=True)
-  title3 = models.CharField(_("content3"), max_length=255, blank=True)
-  img = models.CharField(_("link image"), max_length=1024, blank=True)
-  path_1 = models.CharField(_("path 1"), max_length=1024, blank=True)
-  detail_1 = models.CharField(_("detail 1"), max_length=1024, blank=True)
-  path_2 = models.CharField(_("path 2"), max_length=1024, blank=True)
-  detail_2 = models.CharField(_("detail 2"), max_length=1024, blank=True)
-  path_3 = models.CharField(_("path 3"), max_length=1024, blank=True)
-  detail_3 = models.CharField(_("detail 3"), max_length=1024, blank=True)
-
-  
-  
-
+class Setting(models.Model):
+  theme_color = models.CharField(_("Theme Color"), max_length=1024)
+  text_color = models.CharField(_("Text Color"), max_length=1024)
 
   def __str__(self) -> str:
-    return self.title
+      return self.theme_color
 
-class HomeButton(models.Model):
-  button = models.CharField(_("name button"), max_length=255, blank=True)
-  link = models.CharField(_("link"), max_length=255, blank=True)
-  
-  def __str__(self) -> str:
-    return self.button
 
+class Narbar(models.Model):
+  section = models.CharField(_("Name"), max_length=1024)
+  id_section = models.CharField(_("ID"), max_length=1024)
+  link = models.CharField(_("link"), max_length=1024)
 
   def __str__(self) -> str:
-    return self.button
+      return self.section
+
+class HomeBanner(models.Model):
+  bg_link = models.CharField(_("Background Link"), max_length=1024)
+
+  def __str__(self) -> str:
+      return self.bg_link
 
 class About(models.Model):
-  title = models.CharField(_("title"), max_length=255, blank=True)
-  content = MartorField(_("content"), max_length=255, blank=True)
-  img_link = models.CharField(_("link img"), max_length=255, blank=True)
-
-
-
-  def __str__(self) -> str:
-    return self.title
-
-class Achievement(models.Model):
-  number = models.CharField(_("number"), max_length=255, blank=True)
-  content = MartorField(_("content"), max_length=255, blank=True)
+  img_1 = models.CharField(_("Image 1"), max_length=1024)
+  img_2 = models.CharField(_("Image 2"), max_length=1024)
+  title = models.CharField(_("Title"), max_length=1024)
+  content = models.CharField(_("Content"), max_length=1024)
 
   def __str__(self) -> str:
-    return self.number
+      return self.title
+
+class Reason(models.Model):
+  title = models.CharField(_("Title"), max_length=1024)
+  content = models.CharField(_("Content"), max_length=1024)
+  bg = models.CharField(_("Image"), max_length=1024, blank=True)
+
+  def __str__(self) -> str:
+      return self.title
+
+
+class Teacher(models.Model):
+  img = models.CharField(_("Image"), max_length=1024)
+  name = models.CharField(_("Name"), max_length=1024)
+  content = models.CharField(_("Content"), max_length=1024, blank=True)
+
+  def __str__(self) -> str:
+      return self.name
+
+class Student(models.Model):
+  img = models.CharField(_("Image"), max_length=1024)
+  name = models.CharField(_("Name"), max_length=1024)
+  content = models.CharField(_("Content"), max_length=1024, blank=True)
+
+  def __str__(self) -> str:
+      return self.name
 
 class Class(models.Model):
-  name = models.CharField(_("name"), max_length=255, blank=True)
-  title = models.CharField(_("title"), max_length=255, blank=True)
-  note = models.CharField(_("note"), max_length=255, blank=True)
-  link = models.CharField(_("link"), max_length=255, blank=True)
+  name = models.CharField(_("Name"), max_length=1024)
+  student = models.CharField(_("Student"), max_length=1024, blank=True)
+  teacher = models.CharField(_("Teacher"), max_length=1024, blank=True)
+  time = models.CharField(_("Time"), max_length=1024, blank=True)
+
 
   def __str__(self) -> str:
-    return self.name
+      return self.name
 
-class Classroom (models.Model):
-  name = models.CharField(_("name"), max_length=255, blank=True)
-  title = models.CharField(_("title"), max_length=255, blank=True)
-  note = models.CharField(_("note"), max_length=255, blank=True)
-  link = models.CharField(_("link"), max_length=255, blank=True)
+
+class Feedback(models.Model):
+  name = models.CharField(_("Name"), max_length=1024)
+  infor = models.CharField(_("Information"), max_length=1024, blank=True)
+  img = models.CharField(_("Image"), max_length=1024, blank=True)
+  feedback = models.CharField(_("Feedback"), max_length=1024, blank=True)
+  time = models.CharField(_("Time"), max_length=1024, blank=True)
+
 
   def __str__(self) -> str:
-    return self.name
-
-class New (models.Model):
-  title = models.CharField(_("tile"), max_length=255, blank=True)
-  content = models.CharField(_("content"), max_length=255, blank=True)
-  note = models.CharField(_("note"), max_length=255, blank=True)
-  link_img = models.CharField(_("link image"), max_length=255, blank=True)
-  button = models.CharField(_("button"), max_length=255, blank=True)
-  button_link = models.CharField(_("link button"), max_length=255, blank=True)
-
-  def __str__(self) -> str:
-    return self.title
+      return self.name
 
 
-class CoppyRight (models.Model):
-  title = models.CharField(_("tile"), max_length=255, blank=True)
 
-  def __str__(self) -> str:
-        return self.title
+
+
+

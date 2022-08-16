@@ -20,5 +20,7 @@ from home import views as homeView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView.Home.as_view(), name='home'),
+    path('', homeView.Home.as_view(), name='home'),
+
     path('martor/', include('martor.urls')),
 ]
