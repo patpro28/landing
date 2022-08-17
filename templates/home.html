@@ -1,299 +1,430 @@
 {% extends 'base.html' %}
 {% load static martortags %}
 
-{% block navbar %}
-<div class="mx-auto bg-white fixed z-50 top-0 w-full overflow-hidden border-b-2">
-  <div class="w-full mx-auto bg-white items-center justify-between hidden font-medium shadow-md md:flex md:shadow-none  max-w-7xl mx-auto">
-    <!--========== Logo Section Desktop ==========-->  
-    <div class="basis-1/5">
-        <div class="text-[#2196F3] font-bold text-2xl py-2">
-            {% for logo in  logo_section %}
-                <a href="#home">
-                    <img class="h-12 w-12" src="{{ logo.logo }}" alt="">
-                </a>
-            {% endfor %}
-        </div>
-    </div>
-      
-        <!--========== Narbar Section ==========-->  
-        <div class="nav__menu items-center justify-center hidden gap-8 font-semibold  md:flex" id="nav-menu">
-            {% for navbar in navbar_section %}
-                <a href="{{ navbar.link }}">
-                    <div class="block font-semibold cursor-pointer">
-                        {{ navbar.section }}
-                    </div>
-                </a>
-            {% endfor %}
-            
-
-
-            <div class="grid grid-cols-2 gap-4">
-                <a href="https://e.tmath.vn/">
-                    <div class="font-semibold text-center cursor-pointer px-6 py-2 bg-red-600 rounded-full text-white">
-                        Emath
-                    </div>
-                </a>
-                <a href="https://c.tmath.vn/">
-                    <div class="font-semibold text-center cursor-pointer px-6 py-2 bg-red-600 rounded-full text-white">
-                        Tcoding
-                    </div>
-                </a>
-            </div>
-            
-        </div>
-  </div>
-
-    <!--========== Logo Section Mobile ==========-->  
-    <div class="nav flex flex-col overflow-hidden md:hidden transition-[max-height] duration-300 ease-linear max-h-16 rounded-xl" id='mobileNav'>
-        <div class="flex items-center justify-between">
-            <div class="basis-1/4">
-                <div class="text-[#2196F3] font-bold text-2xl p-2 px-3">
-                    {% for logo in  logo_section %}
+    {% block navbar %}
+    <div class="mx-auto bg-white fixed z-50 top-0 w-full overflow-hidden border-b-2">
+    <div class="w-full mx-auto bg-white items-center justify-between hidden font-medium shadow-md md:flex md:shadow-none  max-w-7xl mx-auto">
+        <!--========== Logo Section Desktop ==========-->  
+        <div class="basis-1/5">
+            <div class="text-[#2196F3] font-bold text-2xl py-2">
+                {% for logo in  logo_section %}
+                    <a href="#home">
                         <img class="h-12 w-12" src="{{ logo.logo }}" alt="">
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        
+            <!--========== Narbar Section ==========-->  
+            <div class="nav__menu items-center justify-center hidden gap-8 font-semibold  md:flex" id="nav-menu">
+                {% for navbar in navbar_section %}
+                    <a href="{{ navbar.link }}">
+                        <div class="block font-semibold cursor-pointer">
+                            {{ navbar.section }}
+                        </div>
+                    </a>
+                {% endfor %}
+                
+
+
+                <div class="grid grid-cols-2 gap-4">
+                    {% for setting in setting_section %}
+                    <a href="https://e.tmath.vn/">
+                        <div class="font-semibold text-center cursor-pointer px-6 py-2 bg-[{{ setting.theme_color }}] rounded-full text-white">
+                            Emath
+                        </div>
+                    </a>
+                    <a href="https://c.tmath.vn/">
+                        <div class="font-semibold text-center cursor-pointer px-6 py-2 bg-[{{ setting.theme_color }}] rounded-full text-white">
+                            Tcoding
+                        </div>
+                    </a>
                     {% endfor %}
-            </div>
-        </div>
-        <i class="block px-6 py-4 fas fa-bars fa-lg md:hidden" id="btn"></i>
-    </div>
-
-        <!--========== Narbar Section ==========-->  
-        <div class="flex flex-col [&>*]:px-4 [&>*]:py-2 divide-y">
-            {% for navbar in navbar_section %}
-                <a href="{{ navbar.link }}">
-                    <div class="block font-semibold cursor-pointer">
-                        {{ navbar.section }}
-                    </div>
-                </a>
-            {% endfor %}
-            
-
-            <div class="grid grid-cols-2 gap-4">
-                <a href="#">
-                    <div class="font-semibold text-center cursor-pointer px-6 py-2 bg-red-600 rounded-full text-white">
-                        Emath
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="font-semibold text-center cursor-pointer px-6 py-2 bg-red-600 rounded-full text-white">
-                        Tcoding
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let mobile = document.querySelector('#mobileNav')
-        let btn = document.querySelector('#btn')
-        btn.addEventListener('click', function() {
-            mobile.classList.toggle('max-h-20')
-            mobile.classList.toggle('max-h-full')
-        })
-    </script>
-
-</div>
-{% endblock navbar %}
-
-{% block home %}
-<!--========== Home Section ==========-->  
-<section id="home">
-    {% for homebanner in banner_section %}
-        <div class="h-screen bg-cover bg-center bg-[url({{ homebanner.bg_link }})]">
-            
-        </div>
-    {% endfor %}
-
-    
-</section>
-{% endblock %}
-
-{% block about %}
-<section id="about">
-
-
-    {% for about in about_section %}
-        <div class="h-auto sm:h-screen grid grid-cols-1 sm:grid-cols-2 max-w-6xl mx-auto  py-20">
-
-            <div class="grid w-full grid-rows-1 sm:grid-rows-2 mx-auto gap-4 p-8">
-                <div class="sm:m-4 h-52 sm:h-full rounded-lg bg-cover bg-center reveal__left bg-[url({{ about.img_1 }})]">
-                    
                 </div>
-                <div class="sm:m-4 h-52 sm:h-full rounded-lg bg-cover bg-center reveal__left bg-[url({{ about.img_2 }})]">
-                    
-                </div>
-            </div>
-
-            <div class="flex items-center">
-                <div class="p-8">
-                    <div class="uppercase text-xl font-bold text-red-600 mt-4 reveal__right">{{ about.title }}</div>
-                    <hr class="w-1/2 mt-2 mb-8">
-                    <div class="text-base text-gray-600 font-normal mr-2 reveal__right">
-                        {{ about.content }}
-                    </div>
-
-                    {% comment %} <a href="#">
-                        <div class="w-fit mt-8 px-6 py-3 reveal__right text-white font-medium bg-red-600 rounded-full">Khám phá Tmath</div>
-                    </a> {% endcomment %}
-                </div>
-            </div>
-            
-
-            
-        </div>
-    {% endfor %}
-    
-
-   
-
-
-
-
-    <div class="h-auto max-w-6xl mx-auto  py-20 p-6 reveal__top">
-        <div class="w-full sm:w-1/2 mx-auto text-red-600 font-bold text-3xl uppercase text-center mb-12">
-            Tại sao nên học lập trình tại Tmath Edu ?
-        </div>
-
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 w-full  sm:w-3/4 mx-auto">
-
-
-            {% for reason in reason_section %}
-            <div class="w-full h-auto sm:h-full rounded-xl border-2 cursor-pointer mx-auto reveal__top border-gray-400 p-3">
-                <div class="h-12 w-12 mt-4 border-2 border-gray-400 rounded-full mx-auto flex items-center justify-center">
-                    <i class='bx bx-star text-gray-400 bx-sm'></i>
-                </div>
-
-                <div class="w-full text-center mx-auto mt-4">
-                    <div class="font-semibold text-red-600"> {{ reason.title }} </div>
-                    <div class="text-gray-500 text-sm mt-2">
-                        {{ reason.content }}
-                    </div>
-                </div> 
                 
-                <div class="w-full mt-4 h-36 bg-center bg-cover rounded-md bg-[url({{ reason.bg }})]"></div>
             </div>
-            {% endfor %}
+    </div>
 
-            
-
-            
-
-
-            
-            
-
+        <!--========== Logo Section Mobile ==========-->  
+        <div class="nav flex flex-col overflow-hidden md:hidden transition-[max-height] duration-300 ease-linear max-h-16 rounded-xl" id='mobileNav'>
+            <div class="flex items-center justify-between">
+                <div class="basis-1/4">
+                    <div class="text-[#2196F3] font-bold text-2xl p-2 px-3">
+                        {% for logo in  logo_section %}
+                            <img class="h-12 w-12" src="{{ logo.logo }}" alt="">
+                        {% endfor %}
+                </div>
+            </div>
+            <i class="block px-6 py-4 fas fa-bars fa-lg md:hidden" id="btn"></i>
         </div>
+
+            <!--========== Narbar Section ==========-->  
+            <div class="flex flex-col [&>*]:px-4 [&>*]:py-2 divide-y">
+                {% for navbar in navbar_section %}
+                    <a href="{{ navbar.link }}">
+                        <div class="block font-semibold cursor-pointer">
+                            {{ navbar.section }}
+                        </div>
+                    </a>
+                {% endfor %}
+                
+
+                <div class="grid grid-cols-2 gap-4">
+                    {% for setting in setting_section %}
+                    <a href="https://e.tmath.vn/">
+                        <div class="font-semibold text-center cursor-pointer px-6 py-2 bg-[{{ setting.theme_color }}] rounded-full text-white">
+                            Emath
+                        </div>
+                    </a>
+                    <a href="https://c.tmath.vn/">
+                        <div class="font-semibold text-center cursor-pointer px-6 py-2 bg-[{{ setting.theme_color }}] rounded-full text-white">
+                            Tcoding
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let mobile = document.querySelector('#mobileNav')
+            let btn = document.querySelector('#btn')
+            btn.addEventListener('click', function() {
+                mobile.classList.toggle('max-h-20')
+                mobile.classList.toggle('max-h-full')
+            })
+        </script>
 
     </div>
-</section>
+    {% endblock navbar %}
+
+    {% block home %}
+    <!--========== Home Section ==========-->  
+    <section id="home">
+        {% for homebanner in banner_section %}
+            <div class="h-screen bg-cover bg-center bg-[url({{ homebanner.bg_link }})]">
+                
+            </div>
+        {% endfor %}
+
+        
+    </section>
+    {% endblock %}
+
+    <!--========== About Section ==========-->  
+    {% block about %}
+    <section id="about">
 
 
+        {% for about in about_section %}
+            <div class="h-auto sm:h-screen grid grid-cols-1 sm:grid-cols-2 max-w-6xl mx-auto  py-20">
 
-
-
-
-
-
-{% endblock %}
-
-{% block teacher %}
-<section id="teacher">
-    <div class="h-screen mx-auto py-20 h-screen max-w-6xl p-8">
-        <div class="w-full sm:w-1/2 mx-auto text-red-600 font-bold reveal__left text-3xl uppercase text-center mb-8">
-            đội ngữ giảng dạy chuyên nghiệp, dày dặn kinh nghiệm
-        </div>
-
-
-
-        <div class="flex flex-col w-full swiper max-w-5xl reveal__right">
-            <div class="swiper-wrapper" id="course">
-    
-    
-                {% for teacher in teacher_section %}
-                    <div class="w-1/4 h-auto border-2 mt-8 rounded-xl rounded-t-full p-6 pt-7  swiper-slide">
-                        <div class="w-64 h-64 rounded-full mx-auto bg-cover border-2 bg-[url({{ teacher.img }})]"></div>
-                        <div class="mt-4 py-1">
-                            <div class="font-bold text-base text-red-600">
-                                {{ teacher.name }}
-                            </div>
-                            <hr class="my-2 border-t-2">
-                            <div class="text-sm text-gray-500">
-                                {{ teacher.content }}
-                            </div>
-                        </div>
+                <div class="grid w-full grid-rows-1 sm:grid-rows-2 mx-auto gap-4 p-8">
+                    <div class="sm:m-4 h-52 sm:h-full rounded-lg bg-cover bg-center reveal__left bg-[url({{ about.img_1 }})]">
                         
                     </div>
-                {% endfor %}
-            
+                    <div class="sm:m-4 h-52 sm:h-full rounded-lg bg-cover bg-center reveal__left bg-[url({{ about.img_2 }})]">
+                        
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <div class="p-8">
+                        {% for setting in setting_section %}
+                        <div class="uppercase text-xl font-bold text-[{{ setting.theme_color }}] mt-4 reveal__right">{{ about.title }}</div>
+                        {% endfor %}
+                        <hr class="w-1/2 mt-2 mb-8">
+                        <div class="text-base text-gray-600 font-normal mr-2 reveal__right">
+                            {{ about.content }}
+                        </div>
+
+                        {% comment %} <a href="#">
+                            <div class="w-fit mt-8 px-6 py-3 reveal__right text-white font-medium bg-red-600 rounded-full">Khám phá Tmath</div>
+                        </a> {% endcomment %}
+                    </div>
+                </div>
                 
 
+                
+            </div>
+        {% endfor %}
+        
+
+    
+
+
+
+
+        <div class="h-auto max-w-6xl mx-auto  py-20 p-6 reveal__top">
+            {% for setting in setting_section %}
+            <div class="w-full sm:w-1/2 mx-auto text-[{{ setting.theme_color }}] font-bold text-3xl uppercase text-center mb-12">
+                Tại sao nên học lập trình tại Tmath Edu ?
+            </div>
+            {% endfor %}
+
+            <div class="grid grid-cols-1 px-8 sm:grid-cols-3 gap-6 sm:gap-6 w-full  sm:w-3/4 mx-auto">
+
+
+                {% for reason in reason_section %}
+                <div class="w-full h-auto sm:h-full rounded-xl border-2 cursor-pointer mx-auto reveal__top border-gray-400 p-3">
+                    <div class="h-12 w-12 mt-4 border-2 border-gray-400 rounded-full mx-auto flex items-center justify-center">
+                        <i class='bx bx-star text-gray-400 bx-sm'></i>
+                    </div>
+
+                    <div class="w-full text-center mx-auto mt-4">
+                        {% for setting in setting_section %}
+                        <div class="font-semibold text-[{{ setting.theme_color }}]"> {{ reason.title }} </div>
+                        {% endfor %}
+                        <div class="text-gray-500 text-sm mt-2">
+                            {{ reason.content }}
+                        </div>
+                    </div> 
+                    
+                    <div class="w-full mt-4 h-40 sm:h-36 bg-center bg-cover rounded-md bg-[url({{ reason.bg }})]"></div>
+                </div>
+                {% endfor %}
+
+                
+
+                
+
+
+                
+                
+
+            </div>
+
+        </div>
+    </section>
+    {% endblock %}
+
+    <!--========== Teacher & Student Section ==========-->  
+    {% block teacher %}
+    <section id="teacher">
+        <div class="h-screen mx-auto py-20 h-screen max-w-6xl p-8">
+            {% for setting in setting_section %}
+            <div class="w-full sm:w-1/2 mx-auto text-[{{ setting.theme_color }}] font-bold reveal__left text-3xl uppercase text-center mb-8">
+                đội ngữ giảng dạy chuyên nghiệp, dày dặn kinh nghiệm
+            </div>
+            {% endfor %}
+
+
+
+            <div class="flex flex-col w-full swiper max-w-5xl reveal__right">
+                <div class="swiper-wrapper" id="course">
+        
+        
+                    {% for teacher in teacher_section %}
+                        <div class="w-1/4 h-auto border-2 mt-8 rounded-xl rounded-t-full p-6 pt-7  swiper-slide">
+                            <div class="w-64 h-64 rounded-full mx-auto bg-cover border-2 bg-[url({{ teacher.img }})]"></div>
+                            <div class="mt-4 py-1">
+                                {% for setting in setting_section %}
+                                <div class="font-bold text-base text-[{{ setting.theme_color }}]">
+                                    {{ teacher.name }}
+                                </div>
+                                {% endfor %}
+                                <hr class="my-2 border-t-2">
+                                <div class="text-sm text-gray-500">
+                                    {{ teacher.content }}
+                                </div>
+                            </div>
                             
-            </div>
-            <div class="mx-auto mt-10 pagination !translate-x-0"></div>
-        </div>
-        
-        
-    </div>
-</section>
-
-<section id="student">
-    <div class="h-screen mx-auto py-20 h-screen max-w-6xl p-8">
-        <div class="w-full sm:w-1/2 mx-auto text-red-600 font-bold text-3xl reveal__left uppercase text-center mb-8">
-            Học Viên tiêu biểu của Tmath Edu
-        </div>
-
-
-
-        <div class="flex flex-col w-full swiper max-w-5xl reveal__right">
-            <div class="swiper-wrapper" id="course">
-    
-    
-                {% for student in student_section %}
-                    <div class="w-1/4 h-auto border-2 mt-8 rounded-xl rounded-t-full p-6 pt-7  swiper-slide">
-                        <div class="w-64 h-64 rounded-full mx-auto bg-cover border-2 bg-[url({{ student.img }})]"></div>
-                        <div class="mt-4 py-1">
-                            <div class="font-bold text-base text-red-600">
-                                {{ student.name }}
-                            </div>
-                            <hr class="my-2 border-t-2">
-                            <div class="text-sm text-gray-500">
-                                {{ student.content }}
-                            </div>
                         </div>
-                        
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                
+                    
+
+                                
+                </div>
+                <div class="mx-auto mt-10 pagination !translate-x-0"></div>
+            </div>
             
+            
+        </div>
+    </section>
+
+    <section id="student">
+        <div class="h-screen mx-auto py-20 h-screen max-w-6xl p-8">
+            {% for setting in setting_section %}
+            <div class="w-full sm:w-1/2 mx-auto text-[{{ setting.theme_color }}] font-bold text-3xl reveal__left uppercase text-center mb-8">
+                Học Viên tiêu biểu của Tmath Edu
+            </div>
+            {% endfor %}
+
+
+
+            <div class="flex flex-col w-full swiper max-w-5xl reveal__right">
+                <div class="swiper-wrapper" id="course">
         
-            
+        
+                    {% for student in student_section %}
+                        <div class="w-1/4 h-auto border-2 mt-8 rounded-xl rounded-t-full p-6 pt-7  swiper-slide">
+                            <div class="w-64 h-64 rounded-full mx-auto bg-cover border-2 bg-[url({{ student.img }})]"></div>
+                            <div class="mt-4 py-1">
+                                {% for setting in setting_section %}
+                                <div class="font-bold text-base text-[{{ setting.theme_color }}]">
+                                    {{ student.name }}
+                                </div>
+                                {% endfor %}
+                                <hr class="my-2 border-t-2">
+                                <div class="text-sm text-gray-500">
+                                    {{ student.content }}
+                                </div>
+                            </div>
+                            
+                        </div>
+                    {% endfor %}
+                
             
                 
+                
+                    
+                </div>
+                <div class="mx-auto mt-10 pagination !translate-x-0"></div>
             </div>
-            <div class="mx-auto mt-10 pagination !translate-x-0"></div>
-        </div>
+            
+            
+        </div>   
+    </section>
+    {% endblock %}
+
+    <!--========== Class Section ==========-->  
+    {% block class %}
+    <section id="class">
+        <div class="classes h-auto sm:h-screen w-full bg-cover bg-center px-8">
+            <div class="h-screen mx-auto py-12 h-screen max-w-6xl reveal__top">
+                <div class="w-full sm:w-1/2 mx-auto text-white font-bold text-3xl uppercase text-center mb-12">
+                    Các lớp học tại Tmath Edu
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 sm:hidden gap-8 swiper pb-8 ">
+                    <div class="swiper-wrapper">
+                        <div class="w-full h-[540px]  border-2 rounded-xl border-gray-300 p-6 overflow-auto swiper-slide">
+                            <div class="mx-auto text-white text-xl uppercase font-semibold text-center mb-4">
+                                Lớp toán - tiếng việt
+                            </div>
+                            {% for classes01 in class_01_section %}
+                                <div class="block">
+                                    <hr class="border-t-2 border-gray-300 my-2">
         
+                                    <div class="flex text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                        </svg>
+                                        <div class="mx-1 text-white">
+                                            <div class="font-semibold">
+                                                {{ classes01.name }}
+                                            </div>
         
-    </div>   
-</section>
+                                            <div class="text-white text-sm mt-1">
+                                                <div>
+                                                    {{ classes01.student }}
+                                                </div>
+                                                <div>
+                                                    {{ classes01.teacher }}
+                                                </div>
+                                                <div>
+                                                    {{ classes01.time }}
+                                                </div>
+                                            </div>
+                                            
+        
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            {% endfor %}
+                        </div>
+        
+                        <div class="w-full h-[540px]  border-2 rounded-xl border-gray-300 p-6 overflow-auto swiper-slide">
+                            <div class="mx-auto text-white text-xl uppercase font-semibold text-center mb-4">
+                                Lớp toán - tiếng anh
+                            </div>
+                            {% for classes02 in class_02_section %}
+                                <div class="block">
+                                    <hr class="border-t-2 border-gray-300 my-2">
+        
+                                    <div class="flex text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                        </svg>
+                                        <div class="mx-1 text-white">
+                                            <div class="font-semibold">
+                                                {{ classes02.name }}
+                                            </div>
+        
+                                            <div class="text-white text-sm mt-1">
+                                                <div>
+                                                    {{ classes02.student }}
+                                                </div>
+                                                <div>
+                                                    {{ classes02.teacher }}
+                                                </div>
+                                                <div>
+                                                    {{ classes02.time }}
+                                                </div>
+                                            </div>
+                                            
+        
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            {% endfor %}
+                        </div>
+        
+                        <div class="w-full h-[540px] border-2 rounded-xl border-gray-300 p-6 overflow-auto swiper-slide">
+                            <div class="mx-auto text-white text-xl uppercase font-semibold text-center mb-4">
+                                Lớp lập trình giải thuật
+                            </div>
+                            {% for classes03 in class_03_section %}
+                                <div class="block">
+                                    <hr class="border-t-2 border-gray-300 my-2">
+        
+                                    <div class="flex text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                        </svg>
+                                        <div class="mx-1 text-white">
+                                            <div class="font-semibold">
+                                                {{ classes03.name }}
+                                            </div>
+        
+                                            <div class="text-white text-sm mt-1">
+                                                <div>
+                                                    {{ classes03.student }}
+                                                </div>
+                                                <div>
+                                                    {{ classes03.teacher }}
+                                                </div>
+                                                <div>
+                                                    {{ classes03.time }}
+                                                </div>
+                                            </div>
+                                            
+        
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="mx-auto absolute  pagination "></div>
+        
 
 
+                </div>
 
 
-{% endblock %}
-
-{% block class %}
-<section id="class">
-    <div class="classes h-auto sm:h-screen w-full bg-cover bg-center px-8">
-        <div class="h-screen mx-auto py-12 h-screen max-w-6xl reveal__top">
-            <div class="w-full sm:w-1/2 mx-auto text-white font-bold text-3xl uppercase text-center mb-12">
-                Các lớp học tại Tmath Edu
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 sm:hidden gap-8 swiper pb-8 ">
-                <div class="swiper-wrapper">
-                    <div class="w-full h-[540px]  border-2 rounded-xl border-gray-300 p-6 overflow-auto swiper-slide">
+                <div class="hidden mt-8 sm:grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div class="w-full h-[540px]  border-2 rounded-xl border-gray-300 p-6 overflow-auto ">
                         <div class="mx-auto text-white text-xl uppercase font-semibold text-center mb-4">
                             Lớp toán - tiếng việt
                         </div>
-                        {% for classes in class_section %}
+                        {% for classes01 in class_01_section %}
                             <div class="block">
                                 <hr class="border-t-2 border-gray-300 my-2">
     
@@ -303,18 +434,18 @@
                                     </svg>
                                     <div class="mx-1 text-white">
                                         <div class="font-semibold">
-                                            {{ classes.name }}
+                                            {{ classes01.name }}
                                         </div>
     
                                         <div class="text-white text-sm mt-1">
                                             <div>
-                                                {{ classes.student }}
+                                                {{ classes01.student }}
                                             </div>
                                             <div>
-                                                {{ classes.teacher }}
+                                                {{ classes01.teacher }}
                                             </div>
                                             <div>
-                                                {{ classes.time }}
+                                                {{ classes01.time }}
                                             </div>
                                         </div>
                                         
@@ -327,11 +458,11 @@
                         {% endfor %}
                     </div>
     
-                    <div class="w-full h-[540px]  border-2 rounded-xl border-gray-300 p-6 overflow-auto swiper-slide">
+                    <div class="w-full h-[540px]  border-2 rounded-xl border-gray-300 p-6 overflow-auto ">
                         <div class="mx-auto text-white text-xl uppercase font-semibold text-center mb-4">
                             Lớp toán - tiếng anh
                         </div>
-                        {% for classes in class_section %}
+                        {% for classes02 in class_02_section %}
                             <div class="block">
                                 <hr class="border-t-2 border-gray-300 my-2">
     
@@ -341,18 +472,18 @@
                                     </svg>
                                     <div class="mx-1 text-white">
                                         <div class="font-semibold">
-                                            {{ classes.name }}
+                                            {{ classes02.name }}
                                         </div>
     
                                         <div class="text-white text-sm mt-1">
                                             <div>
-                                                {{ classes.student }}
+                                                {{ classes02.student }}
                                             </div>
                                             <div>
-                                                {{ classes.teacher }}
+                                                {{ classes02.teacher }}
                                             </div>
                                             <div>
-                                                {{ classes.time }}
+                                                {{ classes02.time }}
                                             </div>
                                         </div>
                                         
@@ -365,11 +496,11 @@
                         {% endfor %}
                     </div>
     
-                    <div class="w-full h-[540px] border-2 rounded-xl border-gray-300 p-6 overflow-auto swiper-slide">
+                    <div class="w-full h-[540px] border-2 rounded-xl border-gray-300 p-6 overflow-auto">
                         <div class="mx-auto text-white text-xl uppercase font-semibold text-center mb-4">
                             Lớp lập trình giải thuật
                         </div>
-                        {% for classes in class_section %}
+                        {% for classes03 in class_03_section %}
                             <div class="block">
                                 <hr class="border-t-2 border-gray-300 my-2">
     
@@ -379,18 +510,18 @@
                                     </svg>
                                     <div class="mx-1 text-white">
                                         <div class="font-semibold">
-                                            {{ classes.name }}
+                                            {{ classes03.name }}
                                         </div>
     
                                         <div class="text-white text-sm mt-1">
                                             <div>
-                                                {{ classes.student }}
+                                                {{ classes03.student }}
                                             </div>
                                             <div>
-                                                {{ classes.teacher }}
+                                                {{ classes03.teacher }}
                                             </div>
                                             <div>
-                                                {{ classes.time }}
+                                                {{ classes03.time }}
                                             </div>
                                         </div>
                                         
@@ -402,621 +533,501 @@
                             </div>
                         {% endfor %}
                     </div>
+
+
                 </div>
-                <div class="mx-auto absolute  pagination "></div>
-    
+                <div class="w-full flex justify-center mt-8 text-white">
+                    <div class="font-semibold"> Tư vấn tuyển sinh</div>
+                    <div class="block sm:flex">
+                        <div class="mx-2 flex">
+                            <img class="h-6 w-6" src="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png" alt="">
+                            <div class="font-semibold mx-2">
+                                0384550187
+                            </div>
+                        </div>
+                        <div class="mx-2 flex mt-2 sm:mt-0">
+                            <img class="h-6 w-6" src="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png" alt="">
+                            <div class="font-semibold mx-2">
+                                0384550187
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>    
+    </section>
+    {% endblock class %}
+
+    {% block timetable %}
+    <section id="timetable">
+        <div class="h-screen hidden mx-auto py-16 sm:py-12 max-w-6xl px-8 sm:px-0 reveal__top mt-24 mb-12">
+            {% for setting in setting_section %}
+            <div class="w-full sm:w-1/2 mx-auto text-[{{ setting.theme_color }}] font-bold text-3xl uppercase text-center mb-12">
+                Lịch học các lớp lập trình tại Tmath Edu
+            </div>
+            {% endfor %}
 
 
+
+
+            <div class="flex mt-20">
+                <div class="h-auto">
+
+                    <div class="h-16 ml-auto -mt-6 mr-1.5 w-1 rounded-full bg-gray-300">
+
+                    </div>
+                    <div class="flex">
+                        
+                        <div class="flex">
+                            <div class="mr-2 font-medium -mt-2">
+                                Moday
+                            </div>
+                            
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-gray-300">
+
+                                </div>
+                                <div class="h-16 w-1 rounded-full bg-gray-300">
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        </div>
+                        <div class="flex">
+                            
+                            <div class="mr-2 font-medium -mt-2">
+                                Moday
+                            </div>
+                            
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-gray-300">
+
+                                </div>
+                                <div class="h-16 w-1 rounded-full bg-gray-300">
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="flex">
+                            
+                            <div class="mr-2 font-medium -mt-2">
+                                Moday
+                            </div>
+                            
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-gray-300">
+
+                                </div>
+                                <div class="h-16 w-1 rounded-full bg-gray-300">
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="flex">
+                            
+                            <div class="mr-2 font-medium -mt-2">
+                                Moday
+                            </div>
+                            
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-gray-300">
+
+                                </div>
+                                <div class="h-16 w-1 rounded-full bg-gray-300">
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="flex">
+                            
+                            <div class="mr-2 font-medium -mt-2">
+                                Moday
+                            </div>
+                            
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-gray-300">
+
+                                </div>
+                                <div class="h-16 w-1 rounded-full bg-gray-300">
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="flex">
+                            
+                            <div class="mr-2 font-medium -mt-2">
+                                Moday
+                            </div>
+                            
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-gray-300">
+
+                                </div>
+                                <div class="h-16 w-1 rounded-full bg-gray-300">
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="flex">
+
+                            <div class="mr-2 font-medium -mt-2">
+                                Moday
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-gray-300">
+
+                                </div>
+                                <div class="h-8 w-1 rounded-full bg-gray-300">
+
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
+                    <div class="sm:hidden grid sm:grid-cols-4 w-full -mt-6 ml-2 text-center swiper pb-12" id="classes">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
+                
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                            </div>
+                            
+                            <div class="swiper-slide">
+                                <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
+                
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
+                
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
+                
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+
+                                <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                    Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mx-auto absolute  pagination "></div>
+                    </div>
+
+
+                    <div class="hidden sm:grid sm:grid-cols-4 w-full -mt-6 ml-2 text-center pb-8" id="classes">
+                        <div class="swiper-slide">
+                            <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
+            
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
+            
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
+            
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
+            
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+
+                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
+                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
+                            </div>
+                        </div>
+                        <div class="mx-auto absolute  pagination "></div>
+                    </div>
+
+                    
+                </div>
             </div>
 
+            
+        </div>    
+    </section>
+    {% endblock timetable %}
 
-            <div class="hidden mt-8 sm:grid grid-cols-1 sm:grid-cols-3 gap-8">
-                <div class="w-full h-[540px]  border-2 rounded-xl border-gray-300 p-6 overflow-auto">
-                    <div class="mx-auto text-white text-xl uppercase font-semibold text-center mb-4">
-                        Lớp toán - tiếng việt
-                    </div>
-                    {% for classes in class_section %}
-                        <div class="block">
-                            <hr class="border-t-2 border-gray-300 my-2">
+    <!--========== Feedback Section ==========-->  
+    {% block feedback %}
+    <section id="feedback">
+        <div class="h-screen mx-auto py-12 h-screen max-w-6xl p-8 mt-4 sm:px-0">
 
-                            <div class="flex text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                                </svg>
-                                <div class="mx-1 text-white">
-                                    <div class="font-semibold">
-                                        {{ classes.name }}
+            {% for setting in setting_section %}
+            <div class="w-full sm:w-1/2 mx-auto text-[{{ setting.theme_color }}] mt-12 font-bold text-3xl reveal__left uppercase text-center mb-16">
+                Học Viên nói gì về TMath EDU
+            </div>
+            {% endfor %}
+
+
+            <div class="flex flex-col w-full swiper max-w-6xl reveal__right">
+                <div class="swiper-wrapper" id="course">
+        
+        
+                    {% for feedback in feedback_section %}
+                        <div class="swiper-slide">
+                            <div class="h-auto border-2 rounded-xl p-4">
+
+                                <div class="p-2">
+                                    <div class="h-8 w-8 border-2 rounded-lg flex justify-center items-center text-gray-500">
+                                        <i class='bx bxs-quote-left'></i>
                                     </div>
+                                    <div class="text-gray-500 mt-4">
+                                        {{ feedback.feedback }}
+                        
+                        
+                                    </div>
+                                    <div class="h-8 w-8 border-2 rounded-lg flex justify-center ml-auto items-center text-gray-500">
+                                        <i class='bx bxs-quote-right'></i>
+                                    </div>
+                        
+                                    {% for setting in setting_section %}
+                                    <div class="text-base font-bold text-[{{ setting.theme_color }}]">
+                                        {{ feedback.time }}
 
-                                    <div class="text-white text-sm mt-1">
-                                        <div>
-                                            {{ classes.student }}
+                                    </div>
+                                    {% endfor %}
+                        
+                        
+                                    <div class="flex items-center">
+                                        <div class="h-20 w-20 mt-4 bg-red-500 rounded-full bg-cover bg-center bg-[url({{ feedback.img }})]">
+                                            <img src="" alt="">
                                         </div>
-                                        <div>
-                                            {{ classes.teacher }}
-                                        </div>
-                                        <div>
-                                            {{ classes.time }}
+                                        <div class="w-auto pl-4 w-3/4">
+                                            <div class="text-base font-semibold">
+                                                {{ feedback.name }}
+
+                                            </div>
+                                            <div class="text-sm font-normal text-gray-500">
+                                                {{ feedback.infor }}
+
+                                            </div>
                                         </div>
                                     </div>
                                     
-
                                 </div>
                                 
                             </div>
-                            
                         </div>
                     {% endfor %}
-                </div>
-
-                <div class="w-full h-[540px]  border-2 rounded-xl border-gray-300 p-6 overflow-auto">
-                    <div class="mx-auto text-white text-xl uppercase font-semibold text-center mb-4">
-                        Lớp toán - tiếng anh
-                    </div>
-                    {% for classes in class_section %}
-                        <div class="block">
-                            <hr class="border-t-2 border-gray-300 my-2">
-
-                            <div class="flex text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                                </svg>
-                                <div class="mx-1 text-white">
-                                    <div class="font-semibold">
-                                        {{ classes.name }}
-                                    </div>
-
-                                    <div class="text-white text-sm mt-1">
-                                        <div>
-                                            {{ classes.student }}
-                                        </div>
-                                        <div>
-                                            {{ classes.teacher }}
-                                        </div>
-                                        <div>
-                                            {{ classes.time }}
-                                        </div>
-                                    </div>
-                                    
-
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-                    {% endfor %}
-                </div>
-
-                <div class="w-full h-[540px]  border-2 rounded-xl border-gray-300 p-6 overflow-auto">
-                    <div class="mx-auto text-white text-xl uppercase font-semibold text-center mb-4">
-                        Lớp lập trình giải thuật
-                    </div>
-                    {% for classes in class_section %}
-                        <div class="block">
-                            <hr class="border-t-2 border-gray-300 my-2">
-
-                            <div class="flex text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                                </svg>
-                                <div class="mx-1 text-white">
-                                    <div class="font-semibold">
-                                        {{ classes.name }}
-                                    </div>
-
-                                    <div class="text-white text-sm mt-1">
-                                        <div>
-                                            {{ classes.student }}
-                                        </div>
-                                        <div>
-                                            {{ classes.teacher }}
-                                        </div>
-                                        <div>
-                                            {{ classes.time }}
-                                        </div>
-                                    </div>
-                                    
-
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-                    {% endfor %}
-                </div>
-
-
-            </div>
-            <div class="w-full flex justify-center mt-8 text-white">
-                <div class="font-semibold"> Tư vấn tuyển sinh</div>
-                <div class="block sm:flex">
-                    <div class="mx-2 flex">
-                        <img class="h-6 w-6" src="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png" alt="">
-                        <div class="font-semibold mx-2">
-                            0384550187
-                        </div>
-                    </div>
-                    <div class="mx-2 flex mt-2 sm:mt-0">
-                        <img class="h-6 w-6" src="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png" alt="">
-                        <div class="font-semibold mx-2">
-                            0384550187
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>    
-</section>
-
-{% endblock class %}
-
-
-
-{% block timetable %}
-<section id="timetable">
-    <div class="h-screen hidden mx-auto py-16 sm:py-12 max-w-6xl px-8 sm:px-0 reveal__top mt-24 mb-12">
-        <div class="w-full sm:w-1/2 mx-auto text-red-600 font-bold text-3xl uppercase text-center mb-12">
-            Lịch học các lớp lập trình tại Tmath Edu
-        </div>
-
-
-
-
-        <div class="flex mt-20">
-            <div class="h-auto">
-
-                <div class="h-16 ml-auto -mt-6 mr-1.5 w-1 rounded-full bg-gray-300">
-
-                </div>
-                <div class="flex">
                     
-                    <div class="flex">
-                        <div class="mr-2 font-medium -mt-2">
-                            Moday
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="h-4 w-4 rounded-full bg-gray-300">
-
-                            </div>
-                            <div class="h-16 w-1 rounded-full bg-gray-300">
-
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    </div>
-                    <div class="flex">
-                        
-                        <div class="mr-2 font-medium -mt-2">
-                            Moday
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="h-4 w-4 rounded-full bg-gray-300">
-
-                            </div>
-                            <div class="h-16 w-1 rounded-full bg-gray-300">
-
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="flex">
-                        
-                        <div class="mr-2 font-medium -mt-2">
-                            Moday
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="h-4 w-4 rounded-full bg-gray-300">
-
-                            </div>
-                            <div class="h-16 w-1 rounded-full bg-gray-300">
-
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="flex">
-                        
-                        <div class="mr-2 font-medium -mt-2">
-                            Moday
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="h-4 w-4 rounded-full bg-gray-300">
-
-                            </div>
-                            <div class="h-16 w-1 rounded-full bg-gray-300">
-
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="flex">
-                        
-                        <div class="mr-2 font-medium -mt-2">
-                            Moday
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="h-4 w-4 rounded-full bg-gray-300">
-
-                            </div>
-                            <div class="h-16 w-1 rounded-full bg-gray-300">
-
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="flex">
-                        
-                        <div class="mr-2 font-medium -mt-2">
-                            Moday
-                        </div>
-                        
-                        <div class="flex flex-col items-center">
-                            <div class="h-4 w-4 rounded-full bg-gray-300">
-
-                            </div>
-                            <div class="h-16 w-1 rounded-full bg-gray-300">
-
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="flex">
-
-                        <div class="mr-2 font-medium -mt-2">
-                            Moday
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <div class="h-4 w-4 rounded-full bg-gray-300">
-
-                            </div>
-                            <div class="h-8 w-1 rounded-full bg-gray-300">
-
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-
-                <div class="sm:hidden grid sm:grid-cols-4 w-full -mt-6 ml-2 text-center swiper pb-12" id="classes">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
-            
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                        </div>
-                        
-                        <div class="swiper-slide">
-                            <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
-            
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
-            
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
-            
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-
-                            <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                                Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mx-auto absolute  pagination "></div>
-                </div>
-
-
-                <div class="hidden sm:grid sm:grid-cols-4 w-full -mt-6 ml-2 text-center pb-8" id="classes">
-                    <div class="swiper-slide">
-                        <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
-        
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                    </div>
-                    
-                    <div class="swiper-slide">
-                        <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
-        
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
-        
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="text-black font-medium border-r-2 border-b-2 pb-1">Ca 1</div>
-        
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-
-                        <div class="w-full h-20 text-center border-r-2 border-b-2 p-2">
-                            Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1Lớp CN1, Lớp IT1
-                        </div>
-                    </div>
-                    <div class="mx-auto absolute  pagination "></div>
-                </div>
 
                 
+                    
+                </div>
+                <div class="mx-auto mt-10 pagination !translate-x-0"></div>
             </div>
-        </div>
-
-        
-    </div>    
-</section>
-{% endblock timetable %}
 
 
+            
+        </div>    
+    </section>
+    {% endblock feedback %}
 
 
 
-{% block feedback %}
-<section id="feedback">
-    <div class="h-screen mx-auto py-12 h-screen max-w-6xl p-8 mt-4 sm:px-0">
 
-        <div class="w-full sm:w-1/2 mx-auto text-red-600 mt-12 font-bold text-3xl reveal__left uppercase text-center mb-16">
-            Học Viên nói gì về TMath EDU
-        </div>
-
-
-        <div class="flex flex-col w-full swiper max-w-6xl reveal__right">
-            <div class="swiper-wrapper" id="course">
-    
-    
-                {% for feedback in feedback_section %}
-                    <div class="swiper-slide">
-                        <div class="h-auto border-2 rounded-xl p-4">
-
-                            <div class="p-2">
-                                <div class="h-8 w-8 border-2 rounded-lg flex justify-center items-center text-gray-500">
-                                    <i class='bx bxs-quote-left'></i>
-                                </div>
-                                <div class="text-gray-500 mt-4">
-                                    {{ feedback.feedback }}
-                    
-                    
-                                </div>
-                                <div class="h-8 w-8 border-2 rounded-lg flex justify-center ml-auto items-center text-gray-500">
-                                    <i class='bx bxs-quote-right'></i>
-                                </div>
-                    
-                                <div class="text-base font-bold">
-                                    {{ feedback.time }}
-
-                                </div>
-                    
-                    
-                                <div class="flex items-center">
-                                    <div class="h-20 w-20 mt-4 bg-red-500 rounded-full bg-cover bg-center bg-[url({{ feedback.img }})]">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="w-auto pl-4 w-3/4">
-                                        <div class="text-base font-semibold">
-                                            {{ feedback.name }}
-
-                                        </div>
-                                        <div class="text-sm font-normal text-gray-500">
-                                            {{ feedback.infor }}
-
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-                    </div>
-                {% endfor %}
-                
-
-              
-                
-            </div>
-            <div class="mx-auto mt-10 pagination !translate-x-0"></div>
-        </div>
-
-
-        
-    </div>    
-</section>
-
-{% endblock feedback %}
 
 
 
 <!--========== Footer Section ==========-->  
-
 {% block footer %}
 <div class="w-full h-auto bg-[#272723] p-8 pt-16 sm:p-16 sm:pb-0">
     <div class="max-w-6xl mx-auto">

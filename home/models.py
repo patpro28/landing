@@ -20,8 +20,8 @@ class Logo(models.Model):
       return self.logo
 
 class Setting(models.Model):
-  theme_color = models.CharField(_("Theme Color"), max_length=1024)
-  text_color = models.CharField(_("Text Color"), max_length=1024)
+  theme_color = models.CharField(_("Theme Color"), max_length=1024, blank=True)
+  text_color = models.CharField(_("Text Color"), max_length=1024, blank=True)
 
   def __str__(self) -> str:
       return self.theme_color
@@ -62,7 +62,7 @@ class Reason(models.Model):
 class Teacher(models.Model):
   img = models.CharField(_("Image"), max_length=1024)
   name = models.CharField(_("Name"), max_length=1024)
-  content = models.CharField(_("Content"), max_length=1024, blank=True)
+  content = models.TextField(_("Content"), max_length=1024, blank=True)
 
   def __str__(self) -> str:
       return self.name
@@ -75,7 +75,27 @@ class Student(models.Model):
   def __str__(self) -> str:
       return self.name
 
-class Class(models.Model):
+class Class01(models.Model):
+  name = models.CharField(_("Name"), max_length=1024)
+  student = models.CharField(_("Student"), max_length=1024, blank=True)
+  teacher = models.CharField(_("Teacher"), max_length=1024, blank=True)
+  time = models.CharField(_("Time"), max_length=1024, blank=True)
+
+
+  def __str__(self) -> str:
+      return self.name
+
+class Class02(models.Model):
+  name = models.CharField(_("Name"), max_length=1024)
+  student = models.CharField(_("Student"), max_length=1024, blank=True)
+  teacher = models.CharField(_("Teacher"), max_length=1024, blank=True)
+  time = models.CharField(_("Time"), max_length=1024, blank=True)
+
+
+  def __str__(self) -> str:
+      return self.name
+
+class Class03(models.Model):
   name = models.CharField(_("Name"), max_length=1024)
   student = models.CharField(_("Student"), max_length=1024, blank=True)
   teacher = models.CharField(_("Teacher"), max_length=1024, blank=True)
