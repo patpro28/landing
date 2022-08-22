@@ -75,35 +75,6 @@ class Student(models.Model):
   def __str__(self) -> str:
       return self.name
 
-class Class01(models.Model):
-  name = models.CharField(_("Name"), max_length=1024)
-  student = models.CharField(_("Student"), max_length=1024, blank=True)
-  teacher = models.CharField(_("Teacher"), max_length=1024, blank=True)
-  time = models.CharField(_("Time"), max_length=1024, blank=True)
-
-
-  def __str__(self) -> str:
-      return self.name
-
-class Class02(models.Model):
-  name = models.CharField(_("Name"), max_length=1024)
-  student = models.CharField(_("Student"), max_length=1024, blank=True)
-  teacher = models.CharField(_("Teacher"), max_length=1024, blank=True)
-  time = models.CharField(_("Time"), max_length=1024, blank=True)
-
-
-  def __str__(self) -> str:
-      return self.name
-
-class Class03(models.Model):
-  name = models.CharField(_("Name"), max_length=1024)
-  student = models.CharField(_("Student"), max_length=1024, blank=True)
-  teacher = models.CharField(_("Teacher"), max_length=1024, blank=True)
-  time = models.CharField(_("Time"), max_length=1024, blank=True)
-
-
-  def __str__(self) -> str:
-      return self.name
 
 
 class Feedback(models.Model):
@@ -116,6 +87,27 @@ class Feedback(models.Model):
 
   def __str__(self) -> str:
       return self.name
+
+
+class Class(models.Model): 
+
+  class_name = models.CharField(max_length=200) 
+ 
+  
+  def __str__(self) -> str:
+      return self.class_name
+
+class Room(models.Model): 
+  room_parent = models.ForeignKey(Class,related_name='addition',on_delete=models.CASCADE) 
+  name = models.CharField(_("Name"), max_length=1024, blank=True)
+  student = models.CharField(_("Student"), max_length=1024, blank=True)
+  teacher = models.CharField(_("Teacher"), max_length=1024, blank=True)
+  time = models.CharField(_("Time"), max_length=1024, blank=True)
+
+  def __str__(self) -> str:
+      return self.name
+
+  
 
 
 

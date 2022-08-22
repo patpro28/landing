@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-from .models import Landing, Setting, Logo, Narbar, HomeBanner, About, Reason, Teacher,Student, Class01, Class02, Class03, Feedback
+from .models import Landing, Setting, Logo, Narbar, HomeBanner, About, Reason, Teacher,Student, Feedback, Class, Room
 
 # Create your views here.
 
@@ -18,17 +18,14 @@ class Home(TemplateView):
     reason = Reason.objects.all()
     teacher = Teacher.objects.all()
     student = Student.objects.all()
-    classes01 = Class01.objects.all()
-    classes02 = Class02.objects.all()
-    classes03 = Class03.objects.all()
+    classes = Class.objects.all()
+
+    room = Room.objects.all()
+
+
+
     feedback = Feedback.objects.all()
 
-
-  
-
-
-    
-    
     context = super().get_context_data(**kwargs)
  
    
@@ -41,9 +38,11 @@ class Home(TemplateView):
     context['reason_section'] = reason
     context['teacher_section'] = teacher
     context['student_section'] = student
-    context['class_01_section'] = classes01
-    context['class_02_section'] = classes02
-    context['class_03_section'] = classes03
+    context['class_section'] = classes
+    context['room_section'] = room
+
+
+   
     context['feedback_section'] = feedback
 
 
@@ -56,3 +55,10 @@ class Home(TemplateView):
    
 
     return context
+
+
+class HocBangCuuChuong(TemplateView):
+  template_name: str = 'HocBangCuuChuong.html'
+
+class LearnEnglish(TemplateView):
+  template_name: str = 'LearnEnglish.html'

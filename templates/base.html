@@ -66,6 +66,7 @@
           scroll-behavior: smooth;
         }
 
+
         </style>
 
 
@@ -99,6 +100,10 @@
 
     {% block timetable %}{% endblock timetable %}
     {% block feedback %}{% endblock feedback %}
+    {% block social %}{% endblock social %}
+
+    {% block product %}{% endblock product %}
+
     {% block statistic %}{% endblock statistic %}
     {% block courses %}{% endblock courses %}
     {% block new %}{% endblock new %}
@@ -162,10 +167,22 @@ const sr = ScrollReveal({
     interval: 100,
   })
 
+  function Feedback() {
+    let element = document.getElementById("write_feedback");
+    element.classList.remove("hidden");
+    
+  }
+
+  function CloseFeedback() {
+    let element = document.getElementById("write_feedback");
+    element.classList.add("hidden");
+    
+  }
 
 
 
- 
+
+
 </script>
 </body>
 
