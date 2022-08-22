@@ -91,7 +91,7 @@ class Feedback(models.Model):
 
 class Class(models.Model): 
 
-  class_name = models.CharField(max_length=200) 
+  class_name = models.CharField(max_length=200, null=True) 
  
   
   def __str__(self) -> str:
