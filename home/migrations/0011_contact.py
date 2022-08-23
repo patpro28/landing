@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('home', '0008_remove_class_name_remove_class_student_and_more'),
+        ('home', '0010_alter_class_class_name'),
     ]
 
     operations = [
