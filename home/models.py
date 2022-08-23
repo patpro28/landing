@@ -107,6 +107,15 @@ class Room(models.Model):
   def __str__(self) -> str:
       return self.name
 
+
+class Contact(models.Model): 
+  name = models.CharField(_("Name"), max_length=1024, blank=True)
+  img = models.CharField(_("Image"), max_length=1024, blank=True)
+  link = models.CharField(_("Link"), max_length=1024, blank=True)
+
+  def __str__(self) -> str:
+      return self.name 
+
   
 
 

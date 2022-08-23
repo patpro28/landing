@@ -953,15 +953,13 @@
 
     {% block social %}
     <div class="fixed z-50 bottom-12 px-2 sm:px-4 py-1 sm:py-2 flex-col bg-white rounded-r-xl border-y-2 border-r-2">
-        <a href="facebook.com">
-            <div class="sm:h-8 h-6 sm:my-4 my-3 sm:w-8 w-6 rounded-full   bg-cover bg-center bg-[url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png)]"></div>
-        </a>
-        <a href="facebook.com">
-            <div class="sm:h-8 h-6 sm:my-4 my-3 sm:w-8 w-6  rounded-full  bg-cover bg-center bg-[url(https://thejulius.com.vn/wp-content/uploads/2021/10/mess1.png)]"></div>
-        </a>
-        <a href="facebook.com">
-            <div class="sm:h-8 h-6 sm:my-4 my-3 sm:w-8 w-6 rounded-full   bg-cover bg-center bg-[url(https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png)]"></div>
-        </a>
+
+        {% for contact in contact_section %}
+            <a href="{{ contact.link }}">
+                <div class="sm:h-8 h-6 sm:my-4 my-3 sm:w-8 w-6 rounded-full   bg-cover bg-center bg-[url({{ contact.img }})]"></div>
+            </a>
+        {% endfor %}
+        
      
         <div class="sm:h-8 h-6 sm:my-4 my-2 sm:w-8 w-6 cursor-pointer rounded-full border-2 flex justify-center items-center bg-cover border-gray-400 bg-center text-gray-400" onclick="Feedback()">
             <svg xmlns="http://www.w3.org/2000/svg" class="sm:h-6 h-4 sm:w-6 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1028,7 +1026,7 @@
 
 
     {% block product %}
-    <section id="feedback">
+    <section id="product">
         <div class="h-screen mx-auto py-12 h-screen max-w-6xl p-8 mt-4 sm:px-0">
 
             {% for setting in setting_section %}
@@ -1056,7 +1054,7 @@
                     
                                 <div class="flex items-center my-2">
                                     
-                                    <div class="h-20 w-20 mt-4 bg-[{{ setting.theme_color }}] rounded-full bg-cover bg-center bg-[url({{ feedback.img }})]">
+                                    <div class="h-20 w-20 mt-4 bg-[{{ setting.theme_color }}] rounded-full bg-cover bg-center bg-[url(https://media.istockphoto.com/photos/happy-college-student-smiling-at-the-school-picture-id1349297978?b=1&k=20&m=1349297978&s=170667a&w=0&h=hZfqRvd6mwf4Y6zSVZoZO50ZkgK6gjGV6-qymc1SDFI=)]">
                                         
                                     </div>
                                     <div class="w-auto pl-4 w-3/4">
@@ -1096,7 +1094,7 @@
                     
                                 <div class="flex items-center my-2">
                                     
-                                    <div class="h-20 w-20 mt-4 bg-[{{ setting.theme_color }}] rounded-full bg-cover bg-center bg-[url({{ feedback.img }})]">
+                                    <div class="h-20 w-20 mt-4 bg-[{{ setting.theme_color }}] rounded-full bg-cover bg-center bg-[url(https://media.istockphoto.com/photos/happy-college-student-smiling-at-the-school-picture-id1349297978?b=1&k=20&m=1349297978&s=170667a&w=0&h=hZfqRvd6mwf4Y6zSVZoZO50ZkgK6gjGV6-qymc1SDFI=)]">
                                         
                                     </div>
                                     <div class="w-auto pl-4 w-3/4">
