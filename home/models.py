@@ -70,7 +70,7 @@ class Teacher(models.Model):
       return self.name
 
 class Student(models.Model):
-  img = models.CharField(_("Image"), max_length=1024)
+  img = models.ImageField(_("Image"), upload_to="students")
   name = models.CharField(_("Name"), max_length=1024)
   content = models.TextField(_("Content"), max_length=1024, blank=True)
 
