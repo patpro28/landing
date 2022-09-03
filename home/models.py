@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from martor.models import MartorField
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -60,9 +61,10 @@ class Reason(models.Model):
 
 
 class Teacher(models.Model):
-  img = models.CharField(_("Image"), max_length=1024)
+  img = models.ImageField(_("Image"), upload_to="teachers")
   name = models.CharField(_("Name"), max_length=1024)
   content = models.TextField(_("Content"), max_length=1024, blank=True)
+
 
   def __str__(self) -> str:
       return self.name
@@ -70,7 +72,7 @@ class Teacher(models.Model):
 class Student(models.Model):
   img = models.CharField(_("Image"), max_length=1024)
   name = models.CharField(_("Name"), max_length=1024)
-  content = models.CharField(_("Content"), max_length=1024, blank=True)
+  content = models.TextField(_("Content"), max_length=1024, blank=True)
 
   def __str__(self) -> str:
       return self.name
