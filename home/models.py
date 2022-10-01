@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from martor.models import MartorField
-from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -43,8 +42,8 @@ class HomeBanner(models.Model):
       return self.bg_link
 
 class About(models.Model):
-  img_1 = models.CharField(_("Image 1"), max_length=1024)
-  img_2 = models.CharField(_("Image 2"), max_length=1024)
+  img_1 = models.ImageField(_("image1"), upload_to='about')
+  img_2 = models.ImageField(_("image2"), upload_to='about')
   title = models.CharField(_("Title"), max_length=1024)
   content = models.CharField(_("Content"), max_length=1024)
 
@@ -54,7 +53,7 @@ class About(models.Model):
 class Reason(models.Model):
   title = models.CharField(_("Title"), max_length=1024)
   content = models.CharField(_("Content"), max_length=1024)
-  bg = models.CharField(_("Image"), max_length=1024, blank=True)
+  bg = models.ImageField(_("background"), upload_to='reason')
 
   def __str__(self) -> str:
       return self.title
@@ -82,7 +81,7 @@ class Student(models.Model):
 class Feedback(models.Model):
   name = models.CharField(_("Name"), max_length=1024)
   infor = models.CharField(_("Information"), max_length=1024, blank=True)
-  img = models.CharField(_("Image"), max_length=1024, blank=True)
+  img = models.ImageField(_("avatar"), upload_to='feedback')
   feedback = models.CharField(_("Feedback"), max_length=1024, blank=True)
   time = models.CharField(_("Time"), max_length=1024, blank=True)
 
@@ -112,7 +111,7 @@ class Room(models.Model):
 
 class Contact(models.Model): 
   name = models.CharField(_("Name"), max_length=1024, blank=True)
-  img = models.CharField(_("Image"), max_length=1024, blank=True)
+  img = models.ImageField(_("Icon"), upload_to='social')
   link = models.CharField(_("Link"), max_length=1024, blank=True)
 
   def __str__(self) -> str:

@@ -23,14 +23,9 @@ from home import views as homeView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView.Home.as_view(), name='home'),
-    path('', homeView.Home.as_view(), name='home'),
     path('HocBangCuuChuong/', homeView.HocBangCuuChuong.as_view(), name='HocBangCuuChuong'),
     path('LearnEnglish/', homeView.LearnEnglish.as_view(), name='LearnEnglish'),
-
-
     path('martor/', include('martor.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-
-
