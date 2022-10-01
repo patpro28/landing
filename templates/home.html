@@ -934,12 +934,12 @@
 
 
     <div class="fixed z-50 flex-col hidden h-auto p-6 bg-white border-2 bottom-24 sm:bottom-8 right-1 sm:right-8 rounded-xl sm:p-8" id="write_feedback">
-        {% for setting in setting_section %}
-        <div class="text-lg ml-2 mt-2 font-semibold text-[{{setting.theme_color}}]"> Đánh giá về trung tâm TmathEdu
-            <hr class="border-t-2 mt-2 mr-12 border-[{{setting.theme_color}}]">
-            <i class='absolute cursor-pointer bx bx-x bx-sm top-4 right-4' onclick="CloseFeedback()"></i>
+        <div class="relative mt-2 ml-2 text-lg font-semibold text-black"> 
+            <p class="flex-1">Đánh giá về trung tâm TmathEdu</p>
+            <span class="absolute top-0 cursor-pointer right-4">
+                <i class='fa-solid fa-xmark' onclick="CloseFeedback()"></i>
+            </span>
         </div>
-        {% endfor %}
         <form class="flex items-center my-6">
             <div class="mr-4 shrink-0">
               <img class="object-cover w-16 h-16 rounded-full" src="{% static "img/avatar.png" %}" alt="Current profile photo" />

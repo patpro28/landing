@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import FileExtensionValidator
 from martor.models import MartorField
 
 # Create your models here.
@@ -111,7 +112,7 @@ class Room(models.Model):
 
 class Contact(models.Model): 
   name = models.CharField(_("Name"), max_length=1024, blank=True)
-  img = models.ImageField(_("Icon"), upload_to='social')
+  img = models.FileField(_("Image"), upload_to='social', max_length=255, validators=[FileExtensionValidator(['svg',])])
   link = models.CharField(_("Link"), max_length=1024, blank=True)
 
   def __str__(self) -> str:
